@@ -25,6 +25,11 @@ public class UserController {
 	@Autowired
 	RestTemplate restTemplate;
 
+	/**
+	 * This is save user in DB
+	 * @param user
+	 * @return
+	 */
 	@PostMapping("/user")
 	public User_1 saveUser(@RequestBody User_1 user) {
 		log.info("in user controller method");
