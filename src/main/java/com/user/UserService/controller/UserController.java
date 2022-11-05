@@ -32,6 +32,11 @@ public class UserController {
 
 	}
 
+	/**
+	 * get user object wrt Id
+	 * @param userId
+	 * @return
+	 */
 	@GetMapping("/user/{userId}")
 	public UserDeptVO getUserById(@PathVariable("userId") Long userId) {
 		log.info("in user controller method");
