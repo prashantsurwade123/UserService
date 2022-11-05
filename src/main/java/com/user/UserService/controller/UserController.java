@@ -21,12 +21,13 @@ public class UserController {
 
 	@Autowired
 	UserService userService;
-	
+
 	@Autowired
 	RestTemplate restTemplate;
 
 	/**
 	 * This is save user in DB
+	 * 
 	 * @param user
 	 * @return
 	 */
@@ -39,22 +40,21 @@ public class UserController {
 
 	/**
 	 * get user object wrt Id
+	 * 
 	 * @param userId
 	 * @return
 	 */
 	@GetMapping("/user/{userId}")
 	public UserDeptVO getUserById(@PathVariable("userId") Long userId) {
 		log.info("in user controller method");
-		User_1 user= userService.getUserById(userId).get();
-		
+		User_1 user = userService.getUserById(userId).get();
+
 		Department dept = restTemplate.getForObject("http://DEPARMENT-SERVICE/department/1", Department.class);
-		
 		UserDeptVO userDeptVO = new UserDeptVO();
 		userDeptVO.setDeptId(dept.getDeptId());
 		userDeptVO.setDeptName(dept.getDeptName());
 		userDeptVO.setUserFirstName(user.getUserFirstName());
 		userDeptVO.setUserLastName(user.getUserLastName());
-		
 		return userDeptVO;
 	}
 
